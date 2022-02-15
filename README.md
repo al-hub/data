@@ -77,6 +77,15 @@ with urlopen('https://en.wikipedia.org/wiki/Main_Page') as response:
 ```
 
 #이미지 크로링 정리 중([google_images_download](https://pypi.org/project/google_images_download/))  
+```
+from google_images_download import google_images_download   #importing the library
+
+response = google_images_download.googleimagesdownload()   #class instantiation
+
+arguments = {"keywords":"Polar bears,baloons,Beaches","limit":20,"print_urls":True}   #creating list of arguments
+paths = response.download(arguments)   #passing the arguments to the function
+print(paths)   #printing absolute paths of the downloaded images
+```
 pip install google_images_download 이후,  
 Unfortunately all 20 could not be downloaded because some images were not downloadable. 0 is all we got for this search filter!  
 오류 발생 시,  
