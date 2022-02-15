@@ -49,6 +49,12 @@ sudo rm -rf /var/run/docker.sock /var/run/dockershim.sock /var/run/docker.pid
 sudo rm -rf /var/lib/dockershim /var/run/docker /var/run/dockershim.sock
 ```  
 
+#CSS(Castcading Style Sheets) 이해  
+tag속성설정가능 ( h1, span 여러개 등 )  
+class인자들속성설정가능 (.사용) - html에서 class는 띄어쓰기로 여러개 줄 수 있음  
+html-css link 해 줘야 함 (즉, 다른서버에 이미 만들어 놓은 css 사용할 수도 있음 [bootstrap](https://getbootstrap.com) )   
+공개된 코드들  [codepen](https://codepen.io)  
+[구름](https://www.goorm.io) 컨테이너 구동 후 동작 [샘플](https://css-rsfra.run.goorm.io/css/index.html)  
 
 #크로링 정리 중([BeatifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/))  
 ```
