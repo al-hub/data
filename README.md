@@ -86,4 +86,7 @@ git clone https://github.com/Joeclinton1/google-images-download.git
 cd google-images-download && sudo python setup.py install  
 pip install git+https://github.com/Joeclinton1/google-images-download.git  
 
+#[Teachable Machine Learning](https://teachablemachine.withgoogle.com/)   
+[tf-rsp.netlify.app](tf-rsp.netlify.app)  
+
 
