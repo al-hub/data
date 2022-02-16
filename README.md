@@ -99,3 +99,79 @@ pip install git+https://github.com/Joeclinton1/google-images-download.git
 [tf-rsp.netlify.app](https://tf-rsp.netlify.app)  
 
 
+#window python  
+window [python38-32](https://www.python.org/downloads/windows/)  
+C:\python38-32 설치 및 고급환경설정 path설정(win+r, sysdm.cpl)  
+vs code cmd로 연결(powershell x) (python38-32 select interpret)  
+pip install pywinauto 설치   
+
+
+
+# 크레온  
+가입 및 plus 설치  
+주문 object 사용동의  
+주문내역확인 설정 uncheck   
+[크레온api]  (https://money2.creontrade.com/e5/mboard/ptype_basic/plusPDS/DW_Basic_List.aspx?boardseq=299&m=9505&p=8833&v=8639)
+
+#slack  
+https://slack.com/  로그인 및 본인계정우클릭→Workspace→채널추가  
+https://api.slack.com/  봇만들기  
+Create an app(From strach) → OAuth & Permissions → Scopes(chat:write) → install to Workspace  → Token값복사
+
+(slack메신저)  봇추가  
+#채널명→우클릭→채널세부정보열기→통합→앱추가
+
+(python코드) 메세지보내기  
+```
+import requests
+ 
+def post_message(token, channel, text):
+    response = requests.post("https://slack.com/api/chat.postMessage",
+        headers={"Authorization": "Bearer "+token},
+        data={"channel": channel,"text": text}
+    )
+    print(response)
+ 
+myToken = "xoxb-Token값복사"
+ 
+post_message(myToken,"#채널명","hello world")
+```
+
+#변동성돌파  
+```
+전일변동성*K 
+
+stock  
+buy:0.019  
+sell:0.269  
+
+etf  
+buy:0.019  
+sell:0.019  
+```
+
+#TIPS  
+child git commit count  
+```
+#!/bin/sh
+#find_forks.sh
+#example: sh find_forks.sh https://github.com/al-hub/clien_rss/network/members | sort -k 1
+
+#or change forks url here and run sh find_forks.sh
+forks="https://github.com/INVESTAR/StockAnalysisInPython/network/members"
+
+if [ ! -z "$1" ]
+then
+       forks=$1
+fi
+
+git="https://github.com"
+name=`echo $forks | cut -d '/' -f5`
+
+urls=`curl -s $forks | grep $name | grep "class=\"\" href" | cut -d '"' -f4`
+for url in $urls
+do
+        commits=`curl -s $git$url | grep Commits -B 2 | grep strong | sed 's/.*>\(.*\)<.*/\1/'`
+        echo $commits" "$git$url
+done   
+```
