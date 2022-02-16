@@ -2,7 +2,7 @@
 This is data repositiory for al-hub gits.
 
 
-#docker 사용법 정리 중  
+## docker 사용법 정리 중  
 ```
 #!/bin/bash
 docker_ver=1.15.5-gpu-jupyter
@@ -49,14 +49,14 @@ sudo rm -rf /var/run/docker.sock /var/run/dockershim.sock /var/run/docker.pid
 sudo rm -rf /var/lib/dockershim /var/run/docker /var/run/dockershim.sock
 ```  
 
-#CSS(Castcading Style Sheets) 이해  
+## CSS(Castcading Style Sheets) 이해  
 tag속성설정가능 ( h1, span 여러개 등 )  
 class인자들속성설정가능 (.사용) - html에서 class는 띄어쓰기로 여러개 줄 수 있음  
 html-css link 해 줘야 함 (즉, 다른서버에 이미 만들어 놓은 css 사용할 수도 있음 [bootstrap](https://getbootstrap.com) )   
 공개된 코드들  [codepen](https://codepen.io)  
 [구름](https://www.goorm.io) 컨테이너 구동 후 동작 [샘플](https://css-rsfra.run.goorm.io/css/index.html)  
 
-#크로링 정리 중([BeatifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/))  
+## 크로링 정리 중([BeatifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/))  
 ```
 #!/usr/bin/env python3
 # Anchor extraction from HTML document
@@ -76,7 +76,7 @@ with urlopen('https://en.wikipedia.org/wiki/Main_Page') as response:
     f.close()
 ```
 
-#이미지 크로링 정리 중([google_images_download](https://pypi.org/project/google_images_download/))  
+## 이미지 크로링 정리 중([google_images_download](https://pypi.org/project/google_images_download/))  
 ```
 from google_images_download import google_images_download   #importing the library
 
@@ -95,11 +95,11 @@ git clone https://github.com/Joeclinton1/google-images-download.git
 cd google-images-download && sudo python setup.py install  
 pip install git+https://github.com/Joeclinton1/google-images-download.git  
 
-#[Teachable Machine Learning](https://teachablemachine.withgoogle.com/)   
+## [Teachable Machine Learning](https://teachablemachine.withgoogle.com/)   
 [tf-rsp.netlify.app](https://tf-rsp.netlify.app)  
 
 
-#window python  
+## window python  
 window [python38-32](https://www.python.org/downloads/windows/)  
 C:\python38-32 설치 및 고급환경설정 path설정(win+r, sysdm.cpl)  
 vs code cmd로 연결(powershell x) (python38-32 select interpret)  
@@ -107,13 +107,13 @@ pip install pywinauto 설치
 
 
 
-# 크레온  
+## 크레온  
 가입 및 plus 설치  
 주문 object 사용동의  
 주문내역확인 설정 uncheck   
 [크레온api]  (https://money2.creontrade.com/e5/mboard/ptype_basic/plusPDS/DW_Basic_List.aspx?boardseq=299&m=9505&p=8833&v=8639)
 
-#slack  
+## slack  
 https://slack.com/  로그인 및 본인계정우클릭→Workspace→채널추가  
 https://api.slack.com/  봇만들기  
 Create an app(From strach) → OAuth & Permissions → Scopes(chat:write) → install to Workspace  → Token값복사
@@ -137,7 +137,7 @@ myToken = "xoxb-Token값복사"
 post_message(myToken,"#채널명","hello world")
 ```
 
-#변동성돌파  
+## 변동성돌파  
 ```
 전일변동성*K 
 
@@ -150,7 +150,7 @@ buy:0.019
 sell:0.019  
 ```
 
-#TIPS  
+## TIPS  
 child git commit count  
 ```
 #!/bin/sh
