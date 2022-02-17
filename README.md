@@ -607,6 +607,48 @@ if __name__ == '__main__':
         dbgout('`main -> exception! ' + str(ex) + '`')
 ```
 
+https://flyingkiwi.tistory.com/11  
+```
+import win32com.client
+import pandas as pd
+
+cpohlc = win32com.client.Dispatch('CpSysDib.StockChart')
+
+
+def get_ohlc(code, qty):  # 인자로 받은 종목의 OHLC 가격 정보를 qty 개수만큼 반환한다
+    try:
+        cpohlc.SetInputValue(0, code)  # 종목코드
+        cpohlc.SetInputValue(1, ord('2'))  # 1 기간, 2:개수
+        cpohlc.SetInputValue(4, qty)  # 요청개수
+        cpohlc.SetInputValue(5, [0, 2, 3, 4, 5])  # 0:날짜, 2~5:OHLC
+        cpohlc.SetInputValue(6, ord('D'))  # D:일단위
+        cpohlc.SetInputValue(9, ord('1'))  # 0:무수정주가, 1:수정주가
+        cpohlc.BlockRequest()
+        count = cpohlc.GetHeaderValue(3)  # 3:수신개수
+        columns = ['open', 'high', 'low', 'close']
+        index = []
+        rows = []
+        for i in range(count):
+            index.append(cpohlc.GetDataValue(0, i))
+            rows.append([cpohlc.GetDataValue(1, i), cpohlc.GetDataValue(2, i),
+                         cpohlc.GetDataValue(3, i), cpohlc.GetDataValue(4, i)])
+        df = pd.DataFrame(rows, columns=columns, index=index)
+        return df
+    except Exception as ex:
+        print('get_ohlc() -> 에러: ' + str(ex))
+        return None
+
+
+def get_kvalue(code):  # 인자로 받은 종목에 대한 20일 average noise ratio.
+    try:
+        ohlck = get_ohlc(code, 20)
+        ohlck['noiseratio'] = 1 - (abs(ohlck['open'] - ohlck['close']) / (ohlck['high'] - ohlck['low']))
+        return round(ohlck['noiseratio'].mean(), 2)
+    except Exception as ex:
+        print('get_kvalue() -> 에러: ' + str(ex))
+        return None
+```
+
 
 ## TIPS  
 child git commit count  
