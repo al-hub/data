@@ -97,3 +97,94 @@ pip install git+https://github.com/Joeclinton1/google-images-download.git
 
 ## [Teachable Machine Learning](https://teachablemachine.withgoogle.com/)   
 [tf-rsp.netlify.app](https://tf-rsp.netlify.app)  
+
+
+```
+import numpy as np
+
+#range
+#---------------------------------------------------------------
+temp = range(10)
+list_x = list(range(10))
+
+print('[range],[list]:', temp, list_x)
+
+#list <-> numpy
+np_x=np.array(list_x)
+list_x=np_x.tolist()
+
+print('[list],[numpy]:', list_x, np_x)
+
+
+#numpy: random
+#---------------------------------------------------------------
+size = 10
+x = np.arange(size)
+#y = np.random.uniform(low=1000, high=1500, size=size)
+y = np.random.randint(low=1000, high=1500, size=size)
+
+data_append = np.append(x,y)
+print(x,y,data_append)
+
+#numpy: reshape
+#https://yganalyst.github.io/data_handling/memo_5/
+#x.rehape(2,5)
+re_x=x.reshape(-1,1)
+re_y=y.reshape(-1,1)
+
+#numpy: insert, concatenate 
+#https://velog.io/@dgk089/numpy-%EB%B0%B0%EC%97%B4%EC%9D%98-%ED%96%89%EB%A0%AC-%EC%B6%94%EC%B6%9C-%EC%B6%94%EA%B0%80-%EC%82%AD%EC%A0%9C-%EA%B2%B0%ED%95%A9-%EB%B6%84%ED%95%A0
+data_insert = np.insert(re_x,1,re_y,axis=1)
+data_concat = np.concatenate([re_x, re_y], axis=1)
+
+#seperate
+#x=data_concat.T[0]
+#y=data_concat.T[1]
+x=data_concat[:,0]
+y=data_concat[:,1]
+
+print(re_x, re_y, data_insert, data_concat)
+#---------------------------------------------------------------
+
+
+#regression
+#---------------------------------------------------------------
+from sklearn.linear_model import LinearRegression
+import time
+start_time = time.process_time()
+model = LinearRegression()
+model.fit(x.reshape(-1,1),y)
+
+process_time = int(round((time.process_time()-start_time)*1000))
+print("w,b,time :", model.coef_, model.intercept_, process_time )
+#---------------------------------------------------------------
+
+#plot
+#---------------------------------------------------------------
+from matplotlib import pyplot as plt
+plt.axis([0,size,0,3000])
+plt.title("title")
+plt.xlabel("xlabel")
+plt.ylabel("ylabel")
+
+plt.scatter(x,y)
+
+yy=model.predict(x.reshape(-1,1))
+plt.plot(x,yy,color='red',linewidth=1)
+
+plt.show()
+#---------------------------------------------------------------
+
+
+#file write/read
+#---------------------------------------------------------------
+with open("temp.txt","w") as wfile:
+    wfile.write(str(data_concat))
+    wfile.close()
+
+with open("temp.txt","r") as rfile:
+   data=rfile.read()
+   rfile.close()
+   print(data)
+#---------------------------------------------------------------
+```
