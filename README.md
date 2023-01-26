@@ -206,3 +206,5 @@ K돌파, 델타기본식-원리 이해
 매크로마이크로
 
 해보고싶은것: 전환사채(CB) 투자를 통한 IPO 상장
+
+[](https://sites.google.com/site/dspark618/talks?authuser=0)
